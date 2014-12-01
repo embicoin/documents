@@ -1,6 +1,6 @@
 * 2014/12/01  訳
 * 間違いに気づいたら、修正してpull requestしないといけなんＤＡ☆
-* これ見たて役だったと思ったら寄付しないといけないんDA☆：BTC:1AM97GfDVzBHkyVw2DoBx5mwgejViZz7P1
+* 役だったと思ったら寄付しないといけないんDA☆：BTC:1AM97GfDVzBHkyVw2DoBx5mwgejViZz7P1
 
 
 
