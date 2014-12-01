@@ -1,4 +1,5 @@
-（訳：2014/12/01 これ見た人は寄付しないといけないんDA：BTC:1DZmgf6SJfFbjGL4Zrk1b5xvMUZtcHLzpm)
+（訳：2014/12/01 
+これ見た人は寄付しないといけないんDA：BTC:1DZmgf6SJfFbjGL4Zrk1b5xvMUZtcHLzpm)
 
 
 #Storjコイン入門
