@@ -1,5 +1,5 @@
-* 訳：2014/12/01 
-* 間違いに気づいたら、修正してpull requestしないといけなんＤＡ
+*2014/12/01  訳
+* 間違いに気づいたら、修正してpull requestしないといけなんＤＡ☆
 * これ見た人は寄付しないといけないんDA☆：BTC:1AM97GfDVzBHkyVw2DoBx5mwgejViZz7P1
 
 
