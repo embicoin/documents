@@ -26,10 +26,8 @@ SJCXを取引することができる一つの人気の交換がPoloniex https:/
 
 counterwalletにSJCXを転送する方法は、ビットコインを送るのと同じようなもんだ - 前に書いたようにcounterwalletからアドレスをコピーして、Poloniex上の残高画面からSJCX引き出しをクリックして、あなたのアドレスを貼り付けよう！
 
-## 薬中
-*https://www.blockscan.com/assetInfo/SJCX  SJCXの状況
-
-*storjは、bitcoinのようにコイン(SJCX)をminingしていくものではなく、SJCXでHDD容量を「売買」するもの。すでにIPOでSJCXはすべて生成・配布済み。
-
-*CounterParty    http://counterparty.io/
+## 訳注
+* https://www.blockscan.com/assetInfo/SJCX  SJCXの状況
+* storjは、bitcoinのようにコイン(SJCX)をminingしていくものではなく、SJCXでHDD容量を「売買」するもの。すでにIPOでSJCXはすべて生成・配布済み。
+* CounterParty    http://counterparty.io/
 Bitcoinのtransactionに、（Bitcoinとしては無効なtransactionとなる）特別な記述をして別の通貨のやり取りを記録するプロトコル？CounterPartyを使えば、独自通貨を作っても、自分でブロックチェーンを作成することなく、実績あるBitcoinの安定した取引履歴を生成していくことができる、と理解している。
