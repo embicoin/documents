@@ -24,13 +24,13 @@ https://counterwallet.co/ にいって、大きな緑色の「新しいWalletの
 
 SJCXを購入する最も簡単な方法は、 取引所 を使用することだ。SJCXを購入するためビットコインが必要だ。もし持ってなければ、最近は購入する場所はたくさんあるから、ググレカス。
 
-SJCXを取引することができる一つの人気の交換がPoloniex https://poloniex.com だ。ビットコインを預金するには、「Balance」ボタンをクリックしてビットコインまでスクロールして、「アドレスを生成」をクリックする必要がある。そうすれば、作成したアドレスにビットコイン送ることができる。普通１時間もかからないうちに、一度残高にコインが追加され、「Trade」タブをクリックし、JCXを検索すれば、Storjコインとビットコインの取引できるぞ！
+SJCXを取引することができる一つの人気の取引所がPoloniex https://poloniex.com だ。ビットコインを預金するには、「Balance」ボタンをクリックしてビットコインまでスクロールして、「アドレスを生成」をクリックする必要がある。そうすれば、作成したアドレスにビットコイン送ることができる。普通１時間もかからないうちに、一度残高にコインが追加され、「Trade」タブをクリックし、JCXを検索すれば、Storjコインとビットコインの取引できるぞ！
 
 counterwalletにSJCXを転送する方法は、ビットコインを送るのと同じようなもんだ - 前に書いたようにcounterwalletからアドレスをコピーして、Poloniex上の残高画面からSJCX引き出しをクリックして、あなたのアドレスを貼り付けよう！
 
 ## 訳注
 * https://www.blockscan.com/assetInfo/SJCX  SJCXの状況
 * storjは、bitcoinのようにコイン(SJCX)をminingしていくものではなく、SJCXでHDD容量を「売買」するもの。すでにIPOでSJCXはすべて生成・配布済み。
-* Storj自身はまだ実稼働していないが、SJCXはすでに取引され始めている。
+* というわけでStorj自身はまだ実稼働していないが、SJCXはすでに取引され始めている。
 * CounterParty    http://counterparty.io/
-Bitcoinのtransactionに、（Bitcoinとしては無効なtransactionとなる）特別な記述をして別の通貨のやり取りを記録するプロトコル？CounterPartyを使えば、独自通貨を作っても、自分でブロックチェーンを作成することなく、実績あるBitcoinの安定した取引履歴を生成していくことができる、と理解している。デメリットとして、独自通貨のtransaction生成時、bitcoinのtransactionを作成しないといけないので、手数料分のbitcoinが必要である。
+Bitcoinのtransactionに、（Bitcoinとしては無効なtransactionとなる）特別な記述をして別の通貨のやり取りを記録するプロトコル？CounterPartyを使えば、独自通貨を作っても、自分でブロックチェーンを作成することなくBitcoin上のブロックチェーンに取引履歴を生成していくことができる、と理解している。デメリットとして、独自通貨のtransaction生成時、bitcoinのtransactionを作成しないといけないので、手数料分のbitcoinが必要である。
