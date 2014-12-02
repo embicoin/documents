@@ -29,6 +29,7 @@ SJCXを取引することができる一つの人気の取引所がPoloniex http
 counterwalletにSJCXを転送する方法は、ビットコインを送るのと同じようなもんだ - 前に書いたようにcounterwalletからアドレスをコピーして、Poloniex上の残高画面からSJCX引き出しをクリックして、あなたのアドレスを貼り付けよう！
 
 ## 訳注
+* wallet供給者がwallet addressのprivate keyを知る以上、コインがなくなってしまう可能性は否定できない。online walletはあくまで自己責任でご使用ください。
 * https://www.blockscan.com/assetInfo/SJCX  SJCXの状況
 * storjは、bitcoinのようにコイン(SJCX)をminingしていくものではなく、SJCXでHDD容量を「売買」するもの。すでにIPOでSJCXはすべて生成・配布済み。
 * というわけでStorj自身はまだ実稼働していないが、SJCXはすでに取引され始めている。
