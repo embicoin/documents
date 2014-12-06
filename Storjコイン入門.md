@@ -1,8 +1,6 @@
 * 2014/12/01  訳
 * 翻訳元： https://storjtalk.org/index.php?topic=1570.msg7110#msg7110 
 * 間違いに気づいたら、修正してpull requestしないといけなんＤＡ☆
-* 役だったと思ったら寄付しないといけないんDA☆：BTC:1AM97GfDVzBHkyVw2DoBx5mwgejViZz7P1
-
 
 
 #Storjコイン入門
