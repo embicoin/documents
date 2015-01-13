@@ -47,7 +47,7 @@ In this article, we will make a simple program that donwloads/uploads files by u
 
 I assume you have already installed Python3, and are familiar with basic Python usage.
 
-##4 Program Template
+##4. Program Template
 First let's make a program template. Right now there is no codes using JSON API.
 ```
 #!/usr/bin/env python
@@ -91,7 +91,8 @@ If you only check quickstart, it's sufficient for this article.
 And we will use "http://node1.metadisk.org" as MetaDisk server, where beta MetaDisk is running. When you access
 this address by your browser, you can see web interface for uploading/downloading files.
 
-Please remind that now MetaDisk is beta, so not all JSON API is usable, and all APIs are subject to change.
+Please remind that now MetaDisk is beta, so not all JSON API is usable, all APIs are subject to change,
+and uploaded files are removed periodically.
 
 When argument 1 is "upload", this program  uploads file specified argument 2 to Storj network. When argument 1 is "download", it downloads from network, and outputs to stdout.
 
