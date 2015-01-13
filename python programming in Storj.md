@@ -41,14 +41,14 @@ clowds, like dropbox, google, etc.
 But MetaDisk also has web-core. Web interface uses web-core as the backend server. Web-core provides a JSON API web service. And this JSON API is open for everyone, unlike most legacy clowds. It means you can easiy and freely create 
 programs using Storj network.
 
-You can use any program languages, like javascript, golang, java, ruby, C, etc..., 
+And you can use any program languages, like javascript, golang, java, ruby, C, etc..., 
 bacause almost languages have (external or basic) library  that can handle JSON.
 In this article, we will make a simple program that donwloads/uploads files by using JSON API in Python.
 
 I assume you have already installed Python3, and are familiar with basic Python usage.
 
-##3 Tempalte of Program
-First let's make a template of program. Now there is no codes using JSON API.
+##4 Program Tempalte
+First let's make a program template. Right now there is no codes using JSON API.
 ```
 #!/usr/bin/env python
 
@@ -84,26 +84,26 @@ if __name__ == '__main__':
             help()
 
 ```
-You can only use basic library, like json or urllib2, but external library [request](http://docs.python-requests.org/en/latest/) is more easy for handling json and http get/post. So we will use this library. Please [install requests library from github](http://docs.python-requests.org/en/latest/user/install/#install), or by using apt-get, pacman, etc.
+You can only use basic library, like json or urllib2, but external library [request](http://docs.python-requests.org/en/latest/) makes handling json and http easier . So we will use this library. Please [install requests library from github](http://docs.python-requests.org/en/latest/user/install/#install), or by using apt-get, pacman, etc.
 The usage of requests library can be refered in [here](http://docs.python-requests.org/en/latest/user/quickstart/).
-You may only check quickstart for this article.
+If you only check quickstart, it's sufficient for this article.
 
 And we will use "http://node1.metadisk.org" as MetaDisk server, where beta MetaDisk is running. When you access
-this address by browser, you can see web interface for uploading/downloading files.
+this address by your browser, you can see web interface for uploading/downloading files.
 
-Please remind that now MetaDisk is beta, so all JSON API may not be usable, and subjects to change.
+Please remind that now MetaDisk is beta, so not all JSON API is usable, and all APIs are subject to change.
 
-When argument 1 is "upload", this program  uploads file specified argument 2 toStorj network. When argument 1 is "download", it downloads from network to stdout.
+When argument 1 is "upload", this program  uploads file specified argument 2 to Storj network. When argument 1 is "download", it downloads from network, and outputs to stdout.
 
 ##4. Using JSON API
-You can check the usage of all JSON APIs at [here](https://github.com/Storj/web-core#api-documentation).
+You can check the usage of all JSON APIs  at (https://github.com/Storj/web-core#api-documentation).
 
 First you should know that there are some rules for uploading/downloading:
 
-* Before uploading, you must get "token", which is neccsary for accesing Storj network.
-* After uploading, you can get "file hash" and "key", which are necessary for downloading from Storj network.
+* Before uploading, you must get a "token", which is neccssary for accesing Storj network.
+* After uploading, you can get "file hash" and "key", which are necessary for downloading the file from Storj network.
 
-Check the API for getting token.
+Let's check the API for getting token.
 
 ```
 POST /accounts/token/new
@@ -115,7 +115,7 @@ Normal result:
 }
 ````
 
-This means you must post to http://node1.metadisk.org/accounts/token/new, without parameter. And the return is the JSON text, whose key is "token". So you can write the code for this 
+This means you must post to http://node1.metadisk.org/accounts/token/new, without parameter. And the return is the JSON text, whose key is "token". So you can write the code by using (http://docs.python-requests.org/en/latest/user/quickstart/#json-response-content)
 ```
     r = requests.post(NODE_URL+"/accounts/token/new")
     j=r.json()
@@ -153,7 +153,7 @@ Normal result:
 ```
 "file" means
 [mutlpart encoded file](http://docs.python-requests.org/en/latest/user/quickstart/#post-a-multipart-encoded-file), 
-so by using with 
+so by using it with 
 [the way of posting data](http://docs.python-requests.org/en/latest/user/quickstart/#more-complicated-post-requests),
 code should be:
 
@@ -167,7 +167,7 @@ def upload(file):
     print(file+" is uploaded. key=\n"+key+"\n")
 ```
 
-It creates variable key, becase when downloading, format of key must be "<filehasah>?key=<key>".
+This code creates a variable named "key", becase when downloading, format of key must be "<filehasah>?key=<key>".
 
 At the end, download API is
 ```
@@ -175,7 +175,7 @@ GET /api/download/<filehash>
 Parameters:
 - filehash
 ```
-file has seems to mean the "key" created above, so
+filehash seems to mean the "key" created above, so
 
 ```
 def download(key):
@@ -248,17 +248,14 @@ test.dat is uploaded. key=
 [utamaro@nowhere ~]$ python storj.py download "0c12e76f671e6056b3be9af526acf1f6ca3d42d9066c811c9bceae560f3791cc?key=31292df8fd0ec1d5c3904fc12a4c90ca1f2425e0aaad1e6171970fddb904a823"
 b'test data\n
 ```
+Be careful to use double-quotation to specify the key when downloading bacause key includes =(equal), which has special meaning for shell.
 
-Be careful to use double-quotation to specify the key when downloading bacause key includes =(equals), which has special meaning for shell.
+You can see test.data is uploaded, and downloaded sucessfully.
 
 
     
 ##5. Conclusion
-I explaned outline of Storj, MetaDisk, and DriveShare, clowd storage platform. And I wrote a 
-simple program for uploading  /downloading files to/from Storj network by using Python.
-If you have an excellent idea that uses JSON API, try to post your program to
-[this thread](https://storjtalk.org/index.php?topic=1492.0). 
-
-
-
-
+I explaned the outline of Storj, which is clowd storage platform. And I wrote a 
+simple program for uploading  /downloading files across Storj network by using Python.
+If you want to check the other programs using JSON API, check [this thread in Storjtalk](https://storjtalk.org/index.php?topic=1492.0). 
+If you have an excellent idea that uses JSON API, don't hesitate to post your idea to Storjtalk!
