@@ -47,8 +47,8 @@ In this article, we will make a simple program that donwloads/uploads files by u
 
 I assume you have already installed Python3, and are familiar with basic Python usage.
 
-## tempalte for program
-First let's make a template for program.
+##3 Tempalte of Program
+First let's make a template of program. Now there is no codes using JSON API.
 ```
 #!/usr/bin/env python
 
@@ -84,7 +84,9 @@ if __name__ == '__main__':
             help()
 
 ```
-You can only use basic library, like json or urllib2, but external library (request)[http://docs.python-requests.org/en/latest/] is more easy for handling json and http get/post. So we will use this library. Please install requests library (from github)[http://docs.python-requests.org/en/latest/user/install/#install], or by using apt-get, pacman, etc.
+You can only use basic library, like json or urllib2, but external library [request](http://docs.python-requests.org/en/latest/) is more easy for handling json and http get/post. So we will use this library. Please [install requests library from github](http://docs.python-requests.org/en/latest/user/install/#install), or by using apt-get, pacman, etc.
+The usage of requests library can be refered in [here](http://docs.python-requests.org/en/latest/user/quickstart/).
+You may only check quickstart for this article.
 
 And we will use "http://node1.metadisk.org" as MetaDisk server, where beta MetaDisk is running. When you access
 this address by browser, you can see web interface for uploading/downloading files.
@@ -99,7 +101,7 @@ First you should know that there are some rules for uploading/downloading:
 * Before uploading, you should get "token", which is neccsary for accesing Storj network.
 * After uploading, you can get "file hash" and "key", which is nessary for downloading from Storj network.
 
-and check the API for getting token.
+Check the API for getting token.
 
 ```
 POST /accounts/token/new
@@ -111,7 +113,24 @@ Normal result:
 }
 ````
 
-This means you must post to 
+This means you must post to http://node1.metadisk.org/accounts/token/new, without parameter. And the return is the JSON text, whose key is "token". So you can write the code for this 
+```
+    r = requests.post(NODE_URL+"/accounts/token/new")
+    j=r.json()
+    token=j["token"]
+```
+j is the dict whose keys and values are ones of JSON.
+
+As a result the function getToken should be:
+```
+def getToken():
+    r = requests.post(NODE_URL+"/accounts/token/new")
+    j=r.json()
+    token=j["token"]
+    sys.stderr.write("token="+token+"\n")
+    return token
+```
+
 
 POST /api/upload
 Parameters:
