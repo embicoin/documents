@@ -1,4 +1,4 @@
-#python programming in Storj.md
+#Python programming in Storj
 
 ##1. About Storj
 
@@ -38,10 +38,82 @@ MetaDisk has web interface, which is composed of only html, css and javascript. 
 files across Storj network, you can use this interface without creating new program. It is same as the legacy 
 clowds, like dropbox, google, etc.
 
-But MetaDisk also has web-core. Web interface uses web-core as the backend server. Web-core provides a JSON API web service. And this JSON API is open for everyone, not like legacy clowds. It means you can freely make programs using 
-Storj network.
+But MetaDisk also has web-core. Web interface uses web-core as the backend server. Web-core provides a JSON API web service. And this JSON API is open for everyone, unlike most legacy clowds. It means you can easiy and freely create 
+programs using Storj network.
 
-In this article, we will make a simple CLI python program using JSON API by python. In fact you can use
-any program languages, like javascript, golang, java, ruby, C, etc..., bacause almost languages have 
-(external or basic) library  that can handle JSON.
+You can use any program languages, like javascript, golang, java, ruby, C, etc..., 
+bacause almost languages have (external or basic) library  that can handle JSON.
+In this article, we will make a simple program that donwloads/uploads files by using JSON API in Python.
+
+I assume you have already installed Python3, and are familiar with basic Python usage.
+
+## tempalte for program
+First let's make a template for program.
+```
+#!/usr/bin/env python
+
+import requests
+import sys
+from sys import argv, exit
+
+NODE_URL="http://node1.metadisk.org"
+
+#code for getting token
+def getToken():
+
+#code for uploading <file> to Storj network
+def upload(file):
+
+#code for downloading from Storj network to stdout
+def download(key):
+
+def help():
+    print('download usage: %s download <key>' % argv[0])
+    print('upload   usage: %s upload   <filename>' % argv[0])
+
+if __name__ == '__main__':
+    if len(argv) != 3:
+        help()
+        exit(1)
+    if argv[1]=="download":
+        download(argv[2])
+    else:
+        if argv[1]=="upload":
+            upload(argv[2])
+        else:
+            help()
+
+```
+You can only use basic library, like json or urllib2, but external library (request)[http://docs.python-requests.org/en/latest/] is more easy for handling json and http get/post. So we will use this library. Please install requests library (from github)[http://docs.python-requests.org/en/latest/user/install/#install], or by using apt-get, pacman, etc.
+
+And we will use "http://node1.metadisk.org" as MetaDisk server, where beta MetaDisk is running. When you access
+this address by browser, you can see web interface for uploading/downloading files.
+
+When argument 1 is "upload", this program  uploads file specified argument 2 toStorj network. When argument 1 is "download", it downloads from network to stdout.
+
+##4. Using JSON API
+You can check the usage of all JSON APIs at [here](https://github.com/Storj/web-core#api-documentation).
+
+First you should know that there are some rules for uploading/downloading:
+
+* Before uploading, you should get "token", which is neccsary for accesing Storj network.
+* After uploading, you can get "file hash" and "key", which is nessary for downloading from Storj network.
+
+and check the API for getting token.
+
+```
+POST /accounts/token/new
+Parameters: None
+
+Normal result:
+{
+    "token": "adF7WFCpQR2EvFkG"
+}
+````
+
+This means you must post to 
+
+POST /api/upload
+Parameters:
+- file
 
