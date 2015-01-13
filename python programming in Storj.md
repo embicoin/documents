@@ -23,7 +23,7 @@ The decentralized aspect of Storj means there are no central servers to be compr
 and because of the use of client-side encryption, only the end-users have access to their unencrypted files 
 and encryption keys.
 
-##2. About MetaDisk and DriveShare.
+##2. About MetaDisk and DriveShare
 
 MetaDisk is an open-source file sharing app that is based on a decentralized network of nodes and is the first application built on top of the Storj platform. These nodes are all around the world and act as a network to host all of the data that goes through MetaDisk.
 
