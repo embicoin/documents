@@ -1,4 +1,6 @@
-#1. About Storj
+#python programming in Storj.md
+
+##1. About Storj
 
 Storj (pronounced: storage) aims to become a cloud storage platform that can’t be censored or monitored, 
 or have downtime. Storj is a platform, cryptocurrency, and suite of decentralized applications that allows users
@@ -21,7 +23,7 @@ The decentralized aspect of Storj means there are no central servers to be compr
 and because of the use of client-side encryption, only the end-users have access to their unencrypted files 
 and encryption keys.
 
-#2. About MetaDisk and DriveShare.
+##2. About MetaDisk and DriveShare.
 
 MetaDisk is an open-source file sharing app that is based on a decentralized network of nodes and is the first application built on top of the Storj platform. These nodes are all around the world and act as a network to host all of the data that goes through MetaDisk.
 
@@ -31,7 +33,7 @@ MetaDisk is our end user application that allows users to store files on the net
 
 DriveShare is an open-source application that allows users to rent out their excess hard drive space in exchange for SJCX. This software works in conjunction with Metadisk. Those running Driveshare will act as decentralized cloud storage nodes for the network.
 
-#3. Uploading files to / Downloading files from Storj Network
+##3. Uploading files to / Downloading files from Storj Network
 MetaDisk has web interface, which is composed of only html, css and javascript. If you want only just upload/download 
 files across Storj network, you can use this interface without creating new program. It is same as the legacy 
 clowds, like dropbox, google, etc.
