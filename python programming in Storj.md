@@ -95,7 +95,7 @@ Please remind that now MetaDisk is beta, so not all JSON API is usable, and all 
 
 When argument 1 is "upload", this program  uploads file specified argument 2 to Storj network. When argument 1 is "download", it downloads from network, and outputs to stdout.
 
-##4. Using JSON API
+##5. Using JSON API
 You can check the usage of all JSON APIs  at (https://github.com/Storj/web-core#api-documentation).
 
 First you should know that there are some rules for uploading/downloading:
@@ -250,11 +250,11 @@ b'test data\n
 ```
 Be careful to use double-quotation to specify the key when downloading bacause key includes =(equal), which has special meaning for shell.
 
-You can see test.data is uploaded, and downloaded sucessfully.
+You can see test.dat is uploaded, and downloaded sucessfully.
 
 
     
-##5. Conclusion
+##6. Conclusion
 I explaned the outline of Storj, which is clowd storage platform. And I wrote a 
 simple program for uploading  /downloading files across Storj network by using Python.
 If you want to check the other programs using JSON API, check [this thread in Storjtalk](https://storjtalk.org/index.php?topic=1492.0). 
