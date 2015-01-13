@@ -98,8 +98,8 @@ You can check the usage of all JSON APIs at [here](https://github.com/Storj/web-
 
 First you should know that there are some rules for uploading/downloading:
 
-* Before uploading, you should get "token", which is neccsary for accesing Storj network.
-* After uploading, you can get "file hash" and "key", which is nessary for downloading from Storj network.
+* Before uploading, you must get "token", which is neccsary for accesing Storj network.
+* After uploading, you can get "file hash" and "key", which are necessary for downloading from Storj network.
 
 Check the API for getting token.
 
@@ -131,8 +131,40 @@ def getToken():
     return token
 ```
 
-
+In a same manner, API for uploading are explaned as:
+```
 POST /api/upload
 Parameters:
 - file
+```
+but in fact, it seems :
+```
+POST /api/upload
+Parameters:
+- file
+- token
+Normal result:
+{
+    "filehash": "xxxxxx"
+    "key": "xxxxx"
+}
+```
+"file" means
+[mutlpart encoded file](http://docs.python-requests.org/en/latest/user/quickstart/#post-a-multipart-encoded-file), 
+with combinating
+[the way of posting data](http://docs.python-requests.org/en/latest/user/quickstart/#more-complicated-post-requests),
+code should be:
+
+```
+def upload(file):
+    token=getToken()
+    r = requests.post(NODE_URL+"/api/upload", files={'file':(file,open(file,'rb'))},
+            data={"token":token})
+    j=r.json()
+    key=j["filehash"]+"?key="+j["key"]
+    print(file+" is uploaded. key=\n"+key+"\n")
+```
+
+It creates variable key, becase when downloading, format of key must be "<filehasah>?key=<key>".
+
 
