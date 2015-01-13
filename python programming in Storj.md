@@ -47,7 +47,7 @@ In this article, we will make a simple program that donwloads/uploads files by u
 
 I assume you have already installed Python3, and are familiar with basic Python usage.
 
-##4 Program Tempalte
+##4 Program Template
 First let's make a program template. Right now there is no codes using JSON API.
 ```
 #!/usr/bin/env python
