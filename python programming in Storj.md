@@ -39,7 +39,7 @@ files across Storj network, you can use this interface without creating new prog
 clowds, like dropbox, google, etc.
 
 But MetaDisk also has web-core. Web interface uses web-core as the backend server. Web-core provides a JSON API web service. And this JSON API is open for everyone, unlike most legacy clowds. It means you can easiy and freely create 
-programs using Storj network. You can use our API to build your own application on top of the network and allow people to host files and build your own business!
+programs using Storj network. You can use API to build your own application on top of the network and allow people to host files and build your own business!
 
 And you can use any program languages, like javascript, golang, java, ruby, C, etc..., 
 bacause almost languages have (external or basic) library  that can handle JSON.
