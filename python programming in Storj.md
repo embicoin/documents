@@ -91,6 +91,8 @@ You may only check quickstart for this article.
 And we will use "http://node1.metadisk.org" as MetaDisk server, where beta MetaDisk is running. When you access
 this address by browser, you can see web interface for uploading/downloading files.
 
+Please remind that now MetaDisk is beta, so all JSON API may not be usable, and subjects to change.
+
 When argument 1 is "upload", this program  uploads file specified argument 2 toStorj network. When argument 1 is "download", it downloads from network to stdout.
 
 ##4. Using JSON API
@@ -131,7 +133,7 @@ def getToken():
     return token
 ```
 
-In a same manner, API for uploading are explaned as:
+In a same manner, API for uploading is explaned as:
 ```
 POST /api/upload
 Parameters:
@@ -151,7 +153,7 @@ Normal result:
 ```
 "file" means
 [mutlpart encoded file](http://docs.python-requests.org/en/latest/user/quickstart/#post-a-multipart-encoded-file), 
-with combinating
+so by using with 
 [the way of posting data](http://docs.python-requests.org/en/latest/user/quickstart/#more-complicated-post-requests),
 code should be:
 
@@ -166,5 +168,97 @@ def upload(file):
 ```
 
 It creates variable key, becase when downloading, format of key must be "<filehasah>?key=<key>".
+
+At the end, download API is
+```
+GET /api/download/<filehash>
+Parameters:
+- filehash
+```
+file has seems to mean the "key" created above, so
+
+```
+def download(key):
+    r = requests.get(NODE_URL+"/api/download/"+key)
+    print(str(r.content))
+```
+
+Finally all code shoule be:
+```
+#!/usr/bin/env python
+
+import requests
+import sys
+
+from sys import argv, exit
+
+NODE_URL="http://node1.metadisk.org"
+
+def getToken():
+    r = requests.post(NODE_URL+"/accounts/token/new")
+    j=r.json()
+    token=j["token"]
+    sys.stderr.write("token="+token+"\n")
+    return token
+
+def upload(file):
+    token=getToken()
+    r = requests.post(NODE_URL+"/api/upload", files={'file':(file,open(file,'rb'))},
+            data={"token":token})
+    j=r.json()
+    key=j["filehash"]+"?key="+j["key"]
+    print(file+" is uploaded. key=\n"+key+"\n")
+
+
+def download(key):
+    r = requests.get(NODE_URL+"/api/download/"+key)
+    print(str(r.content))
+
+def help():
+    print('download usage: %s download <key>' % argv[0])
+    print('upload   usage: %s upload   <filename>' % argv[0])
+
+if __name__ == '__main__':
+    if len(argv) != 3:
+        help()
+        exit(1)
+    if argv[1]=="download":
+        download(argv[2])
+    else:
+        if argv[1]=="upload":
+            upload(argv[2])
+        else:
+            help()
+
+```
+
+When you run this program, it looks like:
+```
+[utamaro@nowhere ~]$ python storj.py 
+download usage: storj.py download <key>
+upload   usage: storj.py upload   <filename>
+
+[utamaro@nowhere ~]$ echo "test data" > test.dat
+
+[utamaro@nowhere ~]$ python storj.py upload test.dat
+token=8puTA1fjG8sg5zf2
+test.dat is uploaded. key=
+0c12e76f671e6056b3be9af526acf1f6ca3d42d9066c811c9bceae560f3791cc?key=31292df8fd0ec1d5c3904fc12a4c90ca1f2425e0aaad1e6171970fddb904a823
+
+[utamaro@nowhere ~]$ python storj.py download "0c12e76f671e6056b3be9af526acf1f6ca3d42d9066c811c9bceae560f3791cc?key=31292df8fd0ec1d5c3904fc12a4c90ca1f2425e0aaad1e6171970fddb904a823"
+b'test data\n
+```
+
+Be careful to use double-quotation to specify the key when downloading bacause key includes =(equals), which has special meaning for shell.
+
+
+    
+##5. Conclusion
+I explaned outline of Storj, MetaDisk, and DriveShare, clowd storage platform. And I wrote a 
+simple program for uploading  /downloading files to/from Storj network by using Python.
+If you have an excellent idea that uses JSON API, try to post your program to
+[this thread](https://storjtalk.org/index.php?topic=1492.0). 
+
+
 
 
