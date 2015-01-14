@@ -38,17 +38,17 @@ MetaDisk has web interface, which is composed of only html, css and javascript. 
 files across Storj network, you can use this interface without creating new program. It is same as the legacy 
 clouds, like dropbox, google, etc.
 
-But MetaDisk also has web-core. Web interface uses web-core as the backend server. Web-core provides a JSON API web service. And this JSON API is open for everyone, unlike most legacy clouds. It means you can easily and freely create 
+But MetaDisk also has web-core. Web interface uses web-core as the backend server. Web-core provides a MetaDisk API web service. And this MetaDisk API is open for everyone, unlike most legacy clouds. It means you can easily and freely create 
 programs using Storj network. You can use API to build your own application on top of the network and allow people to host files and build your own business!
 
 And you can use any program languages, like javascript, golang, java, ruby, C, etc..., 
-bacause almost languages have (external or basic) library  that can handle JSON.
-In this article, we will make a simple program that donwloads/uploads files by using JSON API in Python.
+bacause MetaDisk api uses JSON, and almost languages have (external or basic) library  that can handle JSON.
+In this article, we will make a simple program that donwloads/uploads files by using MetaDisk API in Python.
 
 I assume you have already installed Python3, and are familiar with basic Python usage.
 
 ##4. Program Template
-First let's make a program template. Right now there is no codes using JSON API.
+First let's make a program template. Right now there is no codes using MetaDisk API.
 ```
 #!/usr/bin/env python
 
@@ -91,13 +91,13 @@ If you only check quickstart, it's sufficient for this article.
 And we will use http://node1.metadisk.org as MetaDisk server, where beta MetaDisk is running. When you access
 this address by your browser, you can see web interface for uploading/downloading files.
 
-Please remind that now MetaDisk is beta, so not all JSON API is usable, all APIs are subject to change,
+Please remind that now MetaDisk is beta, so not all MetaDisk API is usable, all APIs are subject to change,
 and uploaded files are removed periodically.
 
 When argument 1 is "upload", this program  uploads file specified argument 2 to Storj network. When argument 1 is "download", it downloads from network, and outputs to stdout.
 
-##5. Using JSON API
-You can check the usage of all JSON APIs  at [github](https://github.com/Storj/web-core#api-documentation).
+##5. Using MetaDisk API
+You can check the usage of all MetaDisk APIs  at [github](https://github.com/Storj/web-core#api-documentation).
 
 First you should know that there are some rules for uploading/downloading:
 
@@ -258,5 +258,5 @@ You can see test.dat is uploaded, and downloaded successfully.
 ##6. Conclusion
 I explained the outline of Storj, which is cloud storage platform. And I wrote a 
 simple program for uploading  /downloading files across Storj network by using Python.
-If you want to check the other programs using JSON API, check [this thread in Storjtalk](https://storjtalk.org/index.php?topic=1492.0). 
-If you have an excellent idea that uses JSON API, don't hesitate to post your idea to Storjtalk!
+If you want to check the other programs using MetaDisk API, check [this thread in Storjtalk](https://storjtalk.org/index.php?topic=1492.0). 
+If you have an excellent idea that uses MetaDisk API, don't hesitate to post your idea to Storjtalk!
