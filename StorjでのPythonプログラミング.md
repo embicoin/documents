@@ -1,6 +1,6 @@
 #StorjでのPythonプログラミング
 
-##1. Storj
+##1. Storjとは
 Storj（ストレージと発音します）は、検閲監視されることなく、
 またシステムダウンすることのないのクラウドストレージプラットフォームとなることを目指しています。
 Storjは、ユーザーが安全かつ分散的にデータを保存することができる、分散型アプリケーションのプラットフォーム、
@@ -23,7 +23,7 @@ DriveShareとデータセキュリティの問題を解決するために取り�
 Storjの分散化の側面は、妥協すべき中央サーバが存在せず、クライアント側の暗号化を使用することにより、
 唯一エンドユーザーが、暗号化されていないファイルや暗号化キーへのアクセス権を持っていることを意味します。
 
-##2.MetaDiskとDriveShare
+##2.MetaDiskとDriveShareとは
 
 MetaDiskはノード分散型ネットワークをベースとするオープンソースのファイル共有アプリであり、
 Storjプラットフォーム上に構築された最初のアプリケーションです。
@@ -96,7 +96,7 @@ jsonやurllib2のような基本的なライブラリのみを使うこともで
 ここでは、このライブラリを使用します。[requestsライブラリをgithubからインストール](http://jp.python-requests.org/en/latest/latest/user/install/#install), するか、apt-get, pacmanを使用いてインストールしてください。
 requestsライブラリの使い方は[ここ](http://jp.python-requests.org/en/latest/user/quickstart/)をみてください。クイックスタートをチェックすれば、この記事には十分です。
 
-そしてMetaDiskサーバーとしてhttp://node1.metadisk.orgを使用します。ここでは、MetaDiskのベータ版が走っています。
+そしてMetaDiskサーバーとして http://node1.metadisk.org を使用します。ここでは、MetaDiskのベータ版が走っています。
 ブラウザでこのアドレスにアクセスすれば、ファイルをアップロード／ダウンロードするウエブインターフェースを
 見ることができます。
 
@@ -109,12 +109,12 @@ requestsライブラリの使い方は[ここ](http://jp.python-requests.org/en/
 ##5. MetaDisk APIを使う
 すべてのMetaDisk APIsは[github](https://github.com/Storj/web-core#api-documentation)で確認できます。
 
-First you should know that there are some rules for uploading/downloading:
+まずアップロード・ダウンロードにいくつかのルールああることを知らないといけません。
 
-* Before uploading, you must get a "token", which is necessary for accessing Storj network.
-* After uploading, you can get "file hash" and "key", which are necessary for downloading the file from Storj network.
+* アップロード前に、Storjネットワークにアクセスするのに必要な”トークン”を取得しなければいけません。
+* アップロード後、”ファイルハッシュ"と"キー"が得られます。これはStorjネットワークからダウンロードするのに必要です。
 
-Let's check the API for getting token.
+トークンを取得するAPIをチェックしましょう。
 
 ```
 POST /accounts/token/new
@@ -126,15 +126,19 @@ Normal result:
 }
 ````
 
-This means you must post to http://node1.metadisk.org/accounts/token/new, without parameter. And the return is the JSON text, whose key is "token". So you can write the code by using the [way of handling JSON] (http://docs.python-requests.org/en/latest/user/quickstart/#json-response-content)
+これは、 http://node1.metadisk.org/accounts/token/new へ、パラメータなしでポストすることを意味しています。
+そして、返り値はJSONテキストで、キーが”トークン”です。なので、
+[way of handling JSON](http://docs.python-requests.org/en/latest/user/quickstart/#json-response-content)を
+使って下記のようにコードがかけます。
 ```
     r = requests.post(NODE_URL+"/accounts/token/new")
     j=r.json()
     token=j["token"]
 ```
-j is the dict whose keys and values are ones of JSON.
+jはキーと値がJSONのキーと値の、dictです。
 
-As a result the function getToken should be:
+結果、getToken関数は下記通りになるでしょう。
+
 ```
 def getToken():
     r = requests.post(NODE_URL+"/accounts/token/new")
@@ -144,13 +148,13 @@ def getToken():
     return token
 ```
 
-In a same manner, API for uploading is explained as:
+同じように、アップロード用APIは下記通り説明されています。
 ```
 POST /api/upload
 Parameters:
 - file
 ```
-but in fact, it seems :
+しかし、実際には下記のようです。
 ```
 POST /api/upload
 Parameters:
@@ -162,11 +166,10 @@ Normal result:
     "key": "xxxxx"
 }
 ```
-"file" means
-[multipart encoded file](http://docs.python-requests.org/en/latest/user/quickstart/#post-a-multipart-encoded-file), 
-so by using it with 
-[the way of posting data](http://docs.python-requests.org/en/latest/user/quickstart/#more-complicated-post-requests),
-code should be:
+"file"は
+[マルチパートエンコードされたファイルのPOST](http://jp.python-requests.org/en/latest/user/quickstart/#id7),なので、
+[データのポスト方法](http://jp.python-requests.org/en/latest/user/quickstart/#post)と合わせて、
+コードは下記通りなるでしょう。
 
 ```
 def upload(file):
