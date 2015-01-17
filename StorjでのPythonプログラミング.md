@@ -38,17 +38,17 @@ DriveShareはユーザーがSJCXと引き換えに余分なハードドライブ
 実行中のDriveshareは、ネットワークで分散型クラウドストレージノードとして機能します。
 
 ##3. Storjネットワークへのファイルのアップロード／ダウンロード
-MetaDiskはhtml,css,javascriptだけでで構成されるウエブインターフェースをもちます。
+MetaDiskはhtml,css,javascriptだけで構成されるウエブインターフェースをもちます。
 もし、ファイルを単にアップロード・ダウンロードしたければ、新たにプログラムを作ることなくこのインターフェースを
 使うことができます。これはちょうどdropboxやgoogle等のレガシーなクラウドと同じです。
 
 しかし、MetaDiskはweb-coreももっています。ウエブインターフェースはバックエンドサーバにweb-coreを使用しています。
-web-coreはMetaDisk APIを提供しています。そしてレガシーなクラウドは違いMetaDisk APIは全員にオープンです。
+web-coreはMetaDisk APIを提供しています。そしてレガシーなクラウドとは違いMetaDisk APIは全員にオープンです。
 これにより、簡単に自由にStorjネットワークを使用したプログラムを作ることができます。
 ネットワーク上に自分のアプリをつくり、みんなにファイルを保存してもらい、自分のビジネスを構築することが
 できます。
 
-MetaDisk APIはJSONを使用いており、JSONはほとんどのプログラムで（組み込みまたは外部の）
+MetaDisk APIはJSONを使用いており、ほとんどの言語で（組み込みまたは外部の）
 ライブラリとしてJSONを扱えるのでjavas javascript, golang, java, ruby, Cのようなどんなプログラム言語を使用できます。
 この記事では、PythonでMetaDisk APIを使った、簡単なファイルのダウンロード・アップロードプログラムを作っていきます。
 
@@ -93,7 +93,7 @@ if __name__ == '__main__':
 ```
 jsonやurllib2のような基本的なライブラリのみを使うこともできますが、外部ライブラリである、
 [requests](http://jp.python-requests.org/en/latest/) を使えば、httpやJSONを簡単に扱うことができます。
-ここでは、このライブラリを使用します。[requestsライブラリをgithubからインストール](http://jp.python-requests.org/en/latest/latest/user/install/#install), するか、apt-get, pacmanを使用いてインストールしてください。
+ここでは、このライブラリを使用します。[requestsライブラリをgithubからインストール](http://jp.python-requests.org/en/latest/latest/user/install/#install) するか、apt-get, pacmanを使用してインストールしてください。
 requestsライブラリの使い方は[ここ](http://jp.python-requests.org/en/latest/user/quickstart/)をみてください。クイックスタートをチェックすれば、この記事には十分です。
 
 そしてMetaDiskサーバーとして http://node1.metadisk.org を使用します。ここでは、MetaDiskのベータ版が走っています。
@@ -104,12 +104,12 @@ requestsライブラリの使い方は[ここ](http://jp.python-requests.org/en/
 アップロードされたファイルは定期的に削除されることに気をつけてください。
 
 引数１が"upload"なら、このプログラムは引数２に指定されたファイルをStorjネットワークにアップロードし、
-引数１が "download"ならネットワークからダウンロードし、標準出力い内容を出力します。
+引数１が "download"ならネットワークからダウンロードし、標準出力へ内容を出力します。
 
 ##5. MetaDisk APIを使う
-すべてのMetaDisk APIsは[github](https://github.com/Storj/web-core#api-documentation)で確認できます。
+すべてのMetaDisk APIは[github](https://github.com/Storj/web-core#api-documentation)で確認できます。
 
-まずアップロード・ダウンロードにいくつかのルールああることを知らないといけません。
+まずアップロード・ダウンロードにいくつかのルールがあることを知らないといけません。
 
 * アップロード前に、Storjネットワークにアクセスするのに必要な”トークン”を取得しなければいけません。
 * アップロード後、”ファイルハッシュ"と"キー"が得られます。これはStorjネットワークからダウンロードするのに必要です。
@@ -128,7 +128,7 @@ Normal result:
 
 これは、 http://node1.metadisk.org/accounts/token/new へ、パラメータなしでポストすることを意味しています。
 そして、返り値はJSONテキストで、キーが”トークン”です。なので、
-[way of handling JSON](http://docs.python-requests.org/en/latest/user/quickstart/#json-response-content)を
+[JSONの扱い方](http://docs.python-requests.org/en/latest/user/quickstart/#json-response-content)を
 使って下記のようにコードがかけます。
 ```
     r = requests.post(NODE_URL+"/accounts/token/new")
@@ -167,7 +167,7 @@ Normal result:
 }
 ```
 "file"は
-[マルチパートエンコードされたファイルのPOST](http://jp.python-requests.org/en/latest/user/quickstart/#id7),なので、
+[マルチパートエンコードされたファイルのPOST](http://jp.python-requests.org/en/latest/user/quickstart/#id7)なので、
 [データのポスト方法](http://jp.python-requests.org/en/latest/user/quickstart/#post)と合わせて、
 コードは下記通りなるでしょう。
 
@@ -273,8 +273,8 @@ b'test data\n
 
     
 ##6. 結論
-クラウドストレージプラットフォームStorjのアウトラインお説明をいました。そして
+クラウドストレージプラットフォームStorjのアウトラインの説明をしました。そして
 Pythonを用いてStorjネットワークへファイルをアップロードダウンロードする簡単なプログラムを作成しました。
 MetaDiskを使用する他のプログラムをチェックしたければ、
 [Storjtalkのこのスレ](https://storjtalk.org/index.php?topic=1492.0)をチェックしてください
-もしMetaDisk APIを使った素晴らしいアイデアあ思いつけば、ぜひStorjtalkへ投稿いてみてください。
+もしMetaDisk APIを使った素晴らしいアイデアが思いつけば、ぜひStorjtalkへ投稿してみてください。
