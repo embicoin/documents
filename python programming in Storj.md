@@ -1,29 +1,31 @@
 #Python programming in Storj
 
 ##1. About Storj
-
 Storj (pronounced: storage) aims to become a cloud storage platform that can’t be censored or monitored, or have downtime.
 Storj is a platform, cryptocurrency, and suite of decentralized applications that allows users to store data in a secure and decentralized manner.
 It uses blockchain features like a transaction ledger, public/private key encryption, and cryptographic hash functions for security. 
 Furthermore, it will be way cheaper (10x-to-100x), faster, and more secure than traditional cloud storage services.
 
-Storj is working hard to solve data security issues with the help of its own web app, [MetaDisk](http://metadisk.org/), and client app, [DriveShare](http://driveshare.org/). It is the first decentralized, end-to-end encrypted cloud storage that uses blockchain technology and cryptography to secure online files. 
-There is no need to trust a corporation, vulnerable servers, or employees with your files. Storj completely removes trust from the equation.
+Storj is working hard to solve data security issues with the help of its own web app, [MetaDisk](http://metadisk.org/), and client app, [DriveShare](http://driveshare.org/). 
+It is the first decentralized, end-to-end encrypted cloud storage that uses blockchain technology and cryptography to secure online files. 
+There is no need to trust a corporation, vulnerable servers, or employees with your files.
+Storj completely removes trust from the equation.
 
-To best protect your data, files are encrypted client-side on users’ computers before they are uploaded. Each file is split up into chunks which are first encrypted and then distributed for storage across the Storj network. 
+To best protect your data, files are encrypted client-side on users’ computers before they are uploaded. 
+Each file is split up into chunks which are first encrypted and then distributed for storage across the Storj network. 
 The network is comprised of DriveShare nodes run by users around the world who rent out their unused hard drive space in return for Storjcoin X (SJCX).
 
 The decentralized aspect of Storj means there are no central servers to be compromised, and because of the use of client-side encryption, only the end-users have access to their unencrypted files and encryption keys.
 
 ##2. About MetaDisk and DriveShare
-
 MetaDisk is an open-source file sharing app that is based on a decentralized network of nodes and is the first application built on top of the Storj platform.
 These nodes are all around the world and act as a network to host all of the data that goes through MetaDisk.
 
 Each file is shredded, encrypted, and then distributed across the network to achieve maximum security.
 Only the original uploader of the files has the private keys to decrypt and open them.
 
-MetaDisk is our end user application that allows users to store files on the network. With MetaDisk you will be able to store, download, and share all of your files securely.
+MetaDisk is our end user application that allows users to store files on the network. 
+With MetaDisk you will be able to store, download, and share all of your files securely.
 
 DriveShare is an open-source application that allows users to rent out their excess hard drive space in exchange for SJCX. 
 This software works in conjunction with Metadisk. 
@@ -41,8 +43,7 @@ And this MetaDisk API is open for everyone, unlike most legacy clouds.
 It means you can easily and freely create programs using Storj network.
 You can use API to build your own application on top of the network and allow people to host files and build your own business!
 
-And you can use any program languages, like javascript, golang, java, ruby, C, etc..., 
-bacause MetaDisk api uses JSON and web api, and almost languages have (external or basic) library  that can handle them.
+And you can use any program languages, like javascript, golang, java, ruby, C, etc..., bacause MetaDisk api uses JSON and web api, and almost languages have (external or basic) library  that can handle them.
 In this article, we will make a simple program that donwloads/uploads files by using MetaDisk API in Python.
 
 I assume you have already installed Python3, and are familiar with basic Python usage.
@@ -85,7 +86,7 @@ if __name__ == '__main__':
 
 ```
 You can only use basic library, like json or urllib2, 
-but external library [requests](http://docs.python-requests.org/en/latest/) makes handling json and http easier .
+but external library [requests](http://docs.python-requests.org/en/latest/) makes handling json and http easier.
 So we will use this library. 
 Please [install requests library from github](http://docs.python-requests.org/en/latest/user/install/#install), or by using apt-get, pacman, etc.
 The usage of requests library can be referred in [here](http://docs.python-requests.org/en/latest/user/quickstart/).
@@ -156,9 +157,7 @@ Normal result:
     "key": "xxxxx"
 }
 ```
-"file" means [multipart encoded file](http://docs.python-requests.org/en/latest/user/quickstart/#post-a-multipart-encoded-file), 
-so by using it with [the way of posting data](http://docs.python-requests.org/en/latest/user/quickstart/#more-complicated-post-requests),
-code should be:
+"file" means [multipart encoded file](http://docs.python-requests.org/en/latest/user/quickstart/#post-a-multipart-encoded-file), so by using it with [the way of posting data](http://docs.python-requests.org/en/latest/user/quickstart/#more-complicated-post-requests),code should be:
 
 ```
 def upload(file):
@@ -260,6 +259,5 @@ You can see test.dat is uploaded, and downloaded successfully.
 ##6. Conclusion
 I explained the outline of Storj, which is cloud storage platform. 
 And I wrote a simple program for uploading  /downloading files across Storj network by using Python.
-If you want to check the other programs using MetaDisk API, 
-check [this thread in Storjtalk](https://storjtalk.org/index.php?topic=1492.0). 
+If you want to check the other programs using MetaDisk API, check [this thread in Storjtalk](https://storjtalk.org/index.php?topic=1492.0). 
 If you have an excellent idea that uses MetaDisk API, don't hesitate to post your idea to Storjtalk!
