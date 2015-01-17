@@ -1,6 +1,6 @@
 #StorjでのPythonプログラミング
 
-##1. Storjとは何ですか？
+##1. Storj
 Storj（ストレージと発音します）は、検閲監視されることなく、
 またシステムダウンすることのないのクラウドストレージプラットフォームとなることを目指しています。
 Storjは、ユーザーが安全かつ分散的にデータを保存することができる、分散型アプリケーションのプラットフォーム、
@@ -38,21 +38,24 @@ DriveShareはユーザーがSJCXと引き換えに余分なハードドライブ
 実行中のDriveshareは、ネットワークで分散型クラウドストレージノードとして機能します。
 
 ##3. Storjネットワークへのファイルのアップロード／ダウンロード
-MetaDisk has web interface, which is composed of only html, css and javascript. If you want only just upload/download 
-files across Storj network, you can use this interface without creating new program. It is same as the legacy 
-clouds, like dropbox, google, etc.
+MetaDiskはhtml,css,javascriptだけでで構成されるウエブインターフェースをもちます。
+もし、ファイルを単にアップロード・ダウンロードしたければ、新たにプログラムを作ることなくこのインターフェースを
+使うことができます。これはちょうどdropboxやgoogle等のレガシーなクラウドと同じです。
 
-But MetaDisk also has web-core. Web interface uses web-core as the backend server. Web-core provides a MetaDisk API web service. And this MetaDisk API is open for everyone, unlike most legacy clouds. It means you can easily and freely create 
-programs using Storj network. You can use API to build your own application on top of the network and allow people to host files and build your own business!
+しかし、MetaDiskはweb-coreももっています。ウエブインターフェースはバックエンドサーバにweb-coreを使用しています。
+web-coreはMetaDisk APIを提供しています。そしてレガシーなクラウドは違いMetaDisk APIは全員にオープンです。
+これにより、簡単に自由にStorjネットワークを使用したプログラムを作ることができます。
+ネットワーク上に自分のアプリをつくり、みんなにファイルを保存してもらい、自分のビジネスを構築することが
+できます。
 
-And you can use any program languages, like javascript, golang, java, ruby, C, etc..., 
-bacause MetaDisk api uses JSON, and almost languages have (external or basic) library  that can handle JSON.
-In this article, we will make a simple program that donwloads/uploads files by using MetaDisk API in Python.
+MetaDisk APIはJSONを使用いており、JSONはほとんどのプログラムで（組み込みまたは外部の）
+ライブラリとしてJSONを扱えるのでjavas javascript, golang, java, ruby, Cのようなどんなプログラム言語を使用できます。
+この記事では、PythonでMetaDisk APIを使った、簡単なファイルのダウンロード・アップロードプログラムを作っていきます。
 
-I assume you have already installed Python3, and are familiar with basic Python usage.
+すでにPython3がインストールされ、基本的なPythonの使い方に慣れ親しんでいる前提とします。
 
-##4. Program Template
-First let's make a program template. Right now there is no codes using MetaDisk API.
+##4. プログラムテンプレート
+まず、プログラムテンプレートを作りましょう。現状では、MetaDisk APIをつかったコードあありません。
 ```
 #!/usr/bin/env python
 
