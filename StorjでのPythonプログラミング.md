@@ -55,7 +55,7 @@ MetaDisk APIはJSONを使用いており、JSONはほとんどのプログラム
 すでにPython3がインストールされ、基本的なPythonの使い方に慣れ親しんでいる前提とします。
 
 ##4. プログラムテンプレート
-まず、プログラムテンプレートを作りましょう。現状では、MetaDisk APIをつかったコードあありません。
+まず、プログラムテンプレートを作りましょう。現状では、MetaDisk APIをつかったコードはありません。
 ```
 #!/usr/bin/env python
 
@@ -91,20 +91,23 @@ if __name__ == '__main__':
             help()
 
 ```
-You can only use basic library, like json or urllib2, but external library [request](http://docs.python-requests.org/en/latest/) makes handling json and http easier . So we will use this library. Please [install requests library from github](http://docs.python-requests.org/en/latest/user/install/#install), or by using apt-get, pacman, etc.
-The usage of requests library can be referred in [here](http://docs.python-requests.org/en/latest/user/quickstart/).
-If you only check quickstart, it's sufficient for this article.
+jsonやurllib2のような基本的なライブラリのみを使うこともできますが、外部ライブラリである、
+[requests](http://jp.python-requests.org/en/latest/) を使えば、httpやJSONを簡単に扱うことができます。
+ここでは、このライブラリを使用します。[requestsライブラリをgithubからインストール](http://jp.python-requests.org/en/latest/latest/user/install/#install), するか、apt-get, pacmanを使用いてインストールしてください。
+requestsライブラリの使い方は[ここ](http://jp.python-requests.org/en/latest/user/quickstart/)をみてください。クイックスタートをチェックすれば、この記事には十分です。
 
-And we will use http://node1.metadisk.org as MetaDisk server, where beta MetaDisk is running. When you access
-this address by your browser, you can see web interface for uploading/downloading files.
+そしてMetaDiskサーバーとしてhttp://node1.metadisk.orgを使用します。ここでは、MetaDiskのベータ版が走っています。
+ブラウザでこのアドレスにアクセスすれば、ファイルをアップロード／ダウンロードするウエブインターフェースを
+見ることができます。
 
-Please remind that now MetaDisk is beta, so not all MetaDisk API is usable, all APIs are subject to change,
-and uploaded files are removed periodically.
+現状、MetaDiskはベータで、すべてのMetaDisk APIが使用可能ではなく、変更される可能性があること、また
+アップロードされたファイルは定期的に削除されることに気をつけてください。
 
-When argument 1 is "upload", this program  uploads file specified argument 2 to Storj network. When argument 1 is "download", it downloads from network, and outputs to stdout.
+引数１が"upload"なら、このプログラムは引数２に指定されたファイルをStorjネットワークにアップロードし、
+引数１が "download"ならネットワークからダウンロードし、標準出力い内容を出力します。
 
-##5. Using MetaDisk API
-You can check the usage of all MetaDisk APIs  at [github](https://github.com/Storj/web-core#api-documentation).
+##5. MetaDisk APIを使う
+すべてのMetaDisk APIsは[github](https://github.com/Storj/web-core#api-documentation)で確認できます。
 
 First you should know that there are some rules for uploading/downloading:
 
