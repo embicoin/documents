@@ -181,15 +181,17 @@ def upload(file):
     print(file+" is uploaded. key=\n"+key+"\n")
 ```
 
-This code creates a variable named "key", because when downloading, format of key must be "<filehasah>?key=<key>".
+このコードは、"key"という変数を作っています、というのはダウンロード時キーのフォーマットは
+"<ファイルハッシュ>?key=<キー>"
+でないといけないからです。
 
-At the end, download API is
+最後にダウンロードAPIは、
 ```
 GET /api/download/<filehash>
 Parameters:
 - filehash
 ```
-filehash seems to mean the "key" created above, so
+filehashは、上で作成した"key"を意味するようなので、
 
 ```
 def download(key):
@@ -197,7 +199,7 @@ def download(key):
     print(str(r.content))
 ```
 
-Finally all code should be:
+最終的にすべてのコードはこうなります。
 ```
 #!/usr/bin/env python
 
@@ -246,7 +248,7 @@ if __name__ == '__main__':
 
 ```
 
-When you run this program, it looks like:
+このプログラムを実行すると、こんな感じです。
 ```
 [utamaro@nowhere ~]$ python storj.py 
 download usage: storj.py download <key>
@@ -262,14 +264,17 @@ test.dat is uploaded. key=
 [utamaro@nowhere ~]$ python storj.py download "0c12e76f671e6056b3be9af526acf1f6ca3d42d9066c811c9bceae560f3791cc?key=31292df8fd0ec1d5c3904fc12a4c90ca1f2425e0aaad1e6171970fddb904a823"
 b'test data\n
 ```
-Be careful to use double-quotation to specify the key when downloading because key includes =(equal), which has special meaning for shell.
 
-You can see test.dat is uploaded, and downloaded successfully.
+ダウンロードする際、キーをダブルクォーテーションでくくってください、というのは、
+キーは=(イコール）を含んでおり、イコールはシェルでは特別な意味をなします。
+
+正しくtest.datがアップロードされ、ダウンロードされているのがわかります。
 
 
     
-##6. Conclusion
-I explained the outline of Storj, which is cloud storage platform. And I wrote a 
-simple program for uploading  /downloading files across Storj network by using Python.
-If you want to check the other programs using MetaDisk API, check [this thread in Storjtalk](https://storjtalk.org/index.php?topic=1492.0). 
-If you have an excellent idea that uses MetaDisk API, don't hesitate to post your idea to Storjtalk!
+##6. 結論
+クラウドストレージプラットフォームStorjのアウトラインお説明をいました。そして
+Pythonを用いてStorjネットワークへファイルをアップロードダウンロードする簡単なプログラムを作成しました。
+MetaDiskを使用する他のプログラムをチェックしたければ、
+[Storjtalkのこのスレ](https://storjtalk.org/index.php?topic=1492.0)をチェックしてください
+もしMetaDisk APIを使った素晴らしいアイデアあ思いつけば、ぜひStorjtalkへ投稿いてみてください。
